@@ -25,18 +25,31 @@ app.get("/api/v1/pets", (req, res) => {
   res.json(pets);
 });
 
+// // get pet by owner with query string
+// app.get("/api/v1/pets/owner/:owner", function (req, res) {
+//   // get the owner from the request
+//   console.log("owner: " + req.query.owner);
+//   //   const { owner } = req.params
+//   // find the pet in the pets array
+//   //   const pet = pets.find(
+//   //     pet => pet.owner.toLowerCase() == owner.toLowerCase()
+//   //   );
+//   //when I save the pet part auto correct to have (pet)
+//   // send the pet as a response
+//   res.send("owner: " + req.query.owner);
+// });
+
 // get pet by owner with query string
-app.get("/api/v1/pets/owner/:owner", function (req, res) {
+app.get("/api/v1/pets/owner", (req, res) => {
+  const { owner } = req.params;
+
   // get the owner from the request
-  console.log("owner: " + req.query.owner);
-  //   const { owner } = req.params
+
   // find the pet in the pets array
-  //   const pet = pets.find(
-  //     pet => pet.owner.toLowerCase() == owner.toLowerCase()
-  //   );
-  //when I save the pet part auto correct to have (pet)
+  const pet = pets.find((pet) => pet.owner === owner);
+
   // send the pet as a response
-  res.send("owner: " + req.query.owner);
+  res.send(pet);
 });
 
 // get pet by name
