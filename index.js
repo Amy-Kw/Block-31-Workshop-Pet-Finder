@@ -26,10 +26,10 @@ app.get("/api/v1/pets", (req, res) => {
 });
 
 // get pet by owner with query string
-app.get("/api/v1/pets/owner", function (req, res) {
+app.get("/api/v1/pets/owner", (req, res) {
   // get the owner from the request
   //   console.log("owner: " + req.query.owner);
-  const { owner } = req.query;
+  const { owner } = req.query
   // find the pet in the pets array
   //   const pet = pets.find(
   const pet = pets.filter((pet) => pet.owner === owner); //when I save the pet part auto correct to have (pet), i know its (pet....
@@ -39,18 +39,18 @@ app.get("/api/v1/pets/owner", function (req, res) {
 });
 
 // get pet by name
-app.get("/api/v1/pets/:name", function (req, res) {
+app.get("/api/v1/pets/:name", (req, res) {
   // get the name from the request
-  const { name } = req.params;
+  const { name } = req.params
   //   console.log("name: " + req.query.owner);
-  console.log(req.params);
-  console.log(name);
+  console.log(req.params)
+  console.log(name)
 
   // find the pet in the pets array
   const pet = pets.find((pet) => pet.name.toLowerCase() === name.toLowerCase()); //when I save the pet part auto correct to have (pet), i know its (pet....
 
   // send the pet as a response
-  res.send(pet);
+  res.send(pet)
   //   res.send("name: " + req.query.owner);
 });
 
