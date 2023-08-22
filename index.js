@@ -39,7 +39,7 @@ app.get("/api/v1/pets/owner/:owner", function (req, res) {
   res.send("owner: " + req.query.owner);
 });
 
-// get pet by name  // not working
+// get pet by name
 app.get("/api/v1/pets/:name", function (req, res) {
   // get the name from the request
   //   const { name } = req.params;
