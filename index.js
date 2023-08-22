@@ -41,24 +41,26 @@ app.get("/api/v1/pets/owner", function (req, res) {
 // get pet by name
 app.get("/api/v1/pets/:name", function (req, res) {
   // get the name from the request
-  //   const name = req.params,name;
-  console.log("name: " + req.query.owner);
+  const { name } = req.params;
+  //   console.log("name: " + req.query.owner);
+  console.log(req.params);
+  console.log(name);
 
   // find the pet in the pets array
-  //   const pet = pets.find(pet => pet.name.toLowerCase() === name.toLowerCase());
+  const pet = pets.find((pet) => pet.name.toLowerCase() === name.toLowerCase()); //when I save the pet part auto correct to have (pet), i know its (pet....
 
   // send the pet as a response
-  //   res.send(pet);
-  res.send("name: " + req.query.owner);
+  res.send(pet);
+  //   res.send("name: " + req.query.owner);
 });
 
-// app.listen(PORT, () => {
-//   console.log("Server is listening on port " + PORT);
+app.listen(PORT, () => {
+  console.log("Server is listening on port " + PORT);
+});
+
+// app.listen(PORT, function (err) {
+//   if (err) console.log(err);
+//   console.log("Server is listening on port ", PORT);
 // });
-
-app.listen(PORT, function (err) {
-  if (err) console.log(err);
-  console.log("Server is listening on port ", PORT);
-});
 
 module.exports = app;
